@@ -4,10 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "run": "node index.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Zachary Gressaffa",
   "license": "ISC",
   "dependencies": {
     "pug": "^2.0.3",

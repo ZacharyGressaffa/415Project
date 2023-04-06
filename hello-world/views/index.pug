@@ -1,6 +1,24 @@
-html
-    head
-        h1= title
-        body
-
-            h1= message
+body
+    h1= "Ticket"
+    form(action="/new_ticket" method="POST")
+    p Type:
+        input(type="text" name="title" placeholder="")
+    p Subject:
+        input(type="text" name="year" placeholder="")
+    p Description:
+        input(type="text" name="imdb" placeholder="")
+    p Priority:
+        input(type="text" name="imdb" placeholder="")
+    p Status:
+        input(type="text" name="imdb" placeholder="")
+    p Recipient:
+        input(type="text" name="imdb" placeholder="")
+    p Submitter:
+        input(type="text" name="imdb" placeholder="")
+    p assignee_id:
+        input(type="text" name="imdb" placeholder="")
+    p follower_ids:
+        input(type="text" name="imdb" placeholder="")
+    p tags:
+        input(type="text" name="imdb" placeholder="")
+    input(type="submit")

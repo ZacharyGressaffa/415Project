@@ -1,28 +1,17 @@
-var express = require('express')
-// var app = express();
-//
-// var tickets = require('./tickets.js');
-// app.use('/tickets', tickets);
-//  app.get('/', function(req, res) {
-//      res.send("Hello World!");
-//  });
-// app.listen(3000);
-var bodyParser = require('body-parser');
-var multer = require('multer');
-var upload = multer();
+var express = require('express');
 var app = express();
-app.get('/', (req, res)=>{
-    res.render('index', {title: 'Hey', message: 'yo'})
-})
+var router = express.Router();
 
-app.set('view engine', 'pug');
-app.set('views', './views');
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(upload.array());
-app.use(express.static('public'))
-app.post('/', function (req, res) {
-    console.log(req.body)
-    res.send("recieved your req")
+router.get('/test', function(req, res) {
+    res.status(200).send('Hello world');
 });
-app.listen(3000)
+
+app.use('/api', router);
+
+app.listen(1069, function(err) {
+    if (err) {
+        console.log(err);
+    } else {
+        console.log('Magic Happens on Port 69');
+    }
+});
