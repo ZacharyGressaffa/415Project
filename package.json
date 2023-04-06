@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "3 Phase semester project",
   "main": "testmongo.js",
-  "repository": "https://github.com/ckorpio/MongoRender",
+  "repository": "https://github.com/ZacharyGressaffa/415Project",
   "author": "ZG",
   "license": "MIT",
   "private": false,
