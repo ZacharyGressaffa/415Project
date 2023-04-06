@@ -1,0 +1,20 @@
+{
+  "name": "zg415Proj",
+  "version": "1.0.0",
+  "description": "3 Phase semester project",
+  "main": "testmongo.js",
+  "repository": "https://github.com/ckorpio/MongoRender",
+  "author": "ZG",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "start": "node testmongo.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongodb": "^5.1.0"
+  },
+  "engines": {
+    "node": ">=14"
+  }
+}
