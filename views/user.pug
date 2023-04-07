@@ -3,11 +3,13 @@ block content
     if error
         p= error
     else
-        p user ID: #{user.userId}
-        p First Name: #{user.type}
-        p Last Name: #{user.subject}
-        p Stuff: #{user.description}
-        p Stuff: #{user.priority}
-        p Stuff: #{user.status}
-        p Stuff: #{user.recipient}
-        p Stuff: #{user.submitter}
+        p Ticket ID: #{user.userId}
+        p Type: #{user.type}
+        p Subject: #{user.subject}
+        p Description: #{user.description}
+        p Priority: #{user.priority}
+        p Status: #{user.status}
+        p Recipient: #{user.recipient}
+        p Submitter: #{user.submitter}
+        p Created: #{user.created_at}
+        p Last Updated: #{user.updated_at}

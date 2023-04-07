@@ -5,28 +5,28 @@ html
         h1= title
         h2 Create user ID
         form(action='/rest/ticket', method='POST')
-            label(for='userId') user ID:
+            label(for='userId') Ticket ID:
             input(type='text', id='userId', name='userId')
             br
-            label(for='type') First Name:
+            label(for='type') Type:
             input(type='text', id='type', name='type')
             br
-            label(for='subject') Last Name:
+            label(for='subject') Subject:
             input(type='text', id='subject', name='subject')
             br
-            label(for='description') stuff:
+            label(for='description') Description:
             input(type='text', id='description', name='description')
             br
-            label(for='priority') stuff:
+            label(for='priority') Priority:
             input(type='text', id='priority', name='priority')
             br
-            label(for='status') stuff:
+            label(for='status') Status:
             input(type='text', id='status', name='status')
             br
-            label(for='recipient') stuff:
+            label(for='recipient') Recipient:
             input(type='text', id='recipient', name='recipient')
             br
-            label(for='submitter') stuff:
+            label(for='submitter') Submitter:
             input(type='text', id='submitter', name='submitter')
             br
             button(type='submit') Create
@@ -39,12 +39,3 @@ html
         button(type='button', onclick="window.location.href='/rest/list'") List All
         if error
             p.error= error
-        if user
-            p user ID: #{user.userId}
-            p First Name: #{user.type}
-            p Last Name: #{user.subject}
-            p Stuff: #{user.description}
-            p Stuff: #{user.priority}
-            p Stuff: #{user.status}
-            p Stuff: #{user.recipient}
-            p Stuff: #{user.submitter}

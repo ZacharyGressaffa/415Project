@@ -1,5 +1,6 @@
 const express = require('express');
 const fs = require('fs');
+const date = require('date-and-time')
 
 const app = express();
 const port = 3000;
@@ -15,7 +16,7 @@ app.get('/', (req, res) => {
     res.render('index', { title: 'Home' });
 });
 
-// Create user ID route
+// Create Ticket
 app.post('/rest/ticket', (req, res) => {
     const userId = req.body.userId;
     const type = req.body.type;
@@ -25,6 +26,10 @@ app.post('/rest/ticket', (req, res) => {
     const status = req.body.status;
     const recipient = req.body.recipient;
     const submitter = req.body.submitter;
+    const create = new Date();
+    const updated = new Date();
+    const created_at = date.format(create,'YYYY/MM/DD HH:mm:ss');
+    const updated_at = date.format(updated,'YYYY/MM/DD HH:mm:ss');
     const user = {
         userId: userId,
         type: type,
@@ -34,6 +39,8 @@ app.post('/rest/ticket', (req, res) => {
         status: status,
         recipient: recipient,
         submitter: submitter,
+        created_at: created_at,
+        updated_at: updated_at
     };
     fs.readFile('mydata.txt', (err, data) => {
         let users = [];
@@ -51,7 +58,7 @@ app.post('/rest/ticket', (req, res) => {
     });
 });
 
-// Search for user ID route
+// Search for ticket by ID
 app.post('/rest/ticket/id', (req, res) => {
     const userId = req.body.userId;
     fs.readFile('mydata.txt', (err, data) => {
@@ -69,6 +76,7 @@ app.post('/rest/ticket/id', (req, res) => {
     });
 });
 
+//Get all Tickets
 app.get('/rest/list', (req, res) => {
     fs.readFile('mydata.txt', (err, data) => {
         if (err) {
@@ -88,20 +96,3 @@ if (!fs.existsSync('mydata.txt')) {
 
 app.listen(port, () => {
 });
-
-/*app.post('/rest/list', (req, res) => {
-    const userId = req.body.userId;
-    fs.readFile('mydata.txt', (err, data) => {
-        if (err) {
-            console.error(err);
-            return;
-        }
-        users.find().toArray(function(err, results) {
-            if (err) {
-                res.render('getAll', { title: 'all users', error: 'user ID not found' });
-            } else {
-                res.render('getAll', { title: 'all users' });
-            }
-        });
-    });
-});*/
