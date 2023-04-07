@@ -3,27 +3,48 @@ html
         title= title
     body
         h1= title
-        h2 Create User ID
-        form(action='/create-user', method='POST')
-            label(for='userId') User ID:
+        h2 Create user ID
+        form(action='/rest/ticket', method='POST')
+            label(for='userId') user ID:
             input(type='text', id='userId', name='userId')
             br
-            label(for='firstName') First Name:
-            input(type='text', id='firstName', name='firstName')
+            label(for='type') First Name:
+            input(type='text', id='type', name='type')
             br
-            label(for='lastName') Last Name:
-            input(type='text', id='lastName', name='lastName')
+            label(for='subject') Last Name:
+            input(type='text', id='subject', name='subject')
+            br
+            label(for='description') stuff:
+            input(type='text', id='description', name='description')
+            br
+            label(for='priority') stuff:
+            input(type='text', id='priority', name='priority')
+            br
+            label(for='status') stuff:
+            input(type='text', id='status', name='status')
+            br
+            label(for='recipient') stuff:
+            input(type='text', id='recipient', name='recipient')
+            br
+            label(for='submitter') stuff:
+            input(type='text', id='submitter', name='submitter')
             br
             button(type='submit') Create
-        h2 Search User ID
-        form(action='/search-user', method='POST')
-            label(for='userId') User ID:
+        h2 Search user ID
+        form(action='/rest/ticket/id', method='POST')
+            label(for='userId') user ID:
             input(type='text', id='userId', name='userId')
             br
             button(type='submit') Search
+        button(type='button', onclick="window.location.href='/rest/list'") List All
         if error
             p.error= error
         if user
-            p User ID: #{user.userId}
-            p First Name: #{user.firstName}
-            p Last Name: #{user.lastName}
+            p user ID: #{user.userId}
+            p First Name: #{user.type}
+            p Last Name: #{user.subject}
+            p Stuff: #{user.description}
+            p Stuff: #{user.priority}
+            p Stuff: #{user.status}
+            p Stuff: #{user.recipient}
+            p Stuff: #{user.submitter}

@@ -16,14 +16,24 @@ app.get('/', (req, res) => {
 });
 
 // Create user ID route
-app.post('/create-user', (req, res) => {
+app.post('/rest/ticket', (req, res) => {
     const userId = req.body.userId;
-    const firstName = req.body.firstName;
-    const lastName = req.body.lastName;
+    const type = req.body.type;
+    const subject = req.body.subject;
+    const description = req.body.description;
+    const priority = req.body.priority;
+    const status = req.body.status;
+    const recipient = req.body.recipient;
+    const submitter = req.body.submitter;
     const user = {
         userId: userId,
-        firstName: firstName,
-        lastName: lastName
+        type: type,
+        subject: subject,
+        description: description,
+        priority: priority,
+        status: status,
+        recipient: recipient,
+        submitter: submitter,
     };
     fs.readFile('mydata.txt', (err, data) => {
         let users = [];
@@ -42,7 +52,7 @@ app.post('/create-user', (req, res) => {
 });
 
 // Search for user ID route
-app.post('/search-user', (req, res) => {
+app.post('/rest/ticket/id', (req, res) => {
     const userId = req.body.userId;
     fs.readFile('mydata.txt', (err, data) => {
         if (err) {
@@ -52,10 +62,22 @@ app.post('/search-user', (req, res) => {
         let users = JSON.parse(data);
         let user = users.find(user => user.userId === userId);
         if (user) {
-            res.render('user', { title: 'User', user: user });
+            res.render('user', { title: 'user', user: user });
         } else {
-            res.render('user', { title: 'User', error: 'User ID not found' });
+            res.render('user', { title: 'user', error: 'user ID not found' });
         }
+    });
+});
+
+app.get('/rest/list', (req, res) => {
+    fs.readFile('mydata.txt', (err, data) => {
+        if (err) {
+            console.error(err);
+            return;
+        }
+        let users = JSON.parse(data);
+        res.json(users);
+        console.log(users)
     });
 });
 
@@ -66,3 +88,20 @@ if (!fs.existsSync('mydata.txt')) {
 
 app.listen(port, () => {
 });
+
+/*app.post('/rest/list', (req, res) => {
+    const userId = req.body.userId;
+    fs.readFile('mydata.txt', (err, data) => {
+        if (err) {
+            console.error(err);
+            return;
+        }
+        users.find().toArray(function(err, results) {
+            if (err) {
+                res.render('getAll', { title: 'all users', error: 'user ID not found' });
+            } else {
+                res.render('getAll', { title: 'all users' });
+            }
+        });
+    });
+});*/

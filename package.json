@@ -11,7 +11,7 @@
   "author": "Zachary Gressaffa",
   "license": "ISC",
   "dependencies": {
-    "pug": "^2.0.3",
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "pug": "^2.0.4"
   }
 }
